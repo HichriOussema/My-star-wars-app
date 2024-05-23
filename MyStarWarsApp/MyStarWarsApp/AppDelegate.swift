@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func createTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         
-        let peopleVC = UINavigationController(rootViewController: UIViewController())
+        let peopleVC = UINavigationController(rootViewController: PeopleViewController())
         peopleVC.tabBarItem = UITabBarItem(title: "People", image: UIImage(systemName: "person.3"), tag: 0)
         
-        let speciesVC = UINavigationController(rootViewController: UIViewController())
+        let speciesVC = UINavigationController(rootViewController: PeopleViewController())
         speciesVC.tabBarItem = UITabBarItem(title: "Species", image: UIImage(systemName: "leaf.arrow.circlepath"), tag: 1)
         
         tabBarController.viewControllers = [peopleVC, speciesVC]

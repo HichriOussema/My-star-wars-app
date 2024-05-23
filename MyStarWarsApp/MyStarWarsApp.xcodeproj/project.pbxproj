@@ -8,18 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		F16454A22BFF486F002DB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16454A12BFF486F002DB93B /* AppDelegate.swift */; };
-		F16454A62BFF486F002DB93B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16454A52BFF486F002DB93B /* ViewController.swift */; };
 		F16454AB2BFF4870002DB93B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16454AA2BFF4870002DB93B /* Assets.xcassets */; };
 		F16454AE2BFF4870002DB93B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16454AC2BFF4870002DB93B /* LaunchScreen.storyboard */; };
+		F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4732BFF919E00268696 /* NetworkService.swift */; };
+		F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4752BFF91C900268696 /* PeopleModel.swift */; };
+		F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */; };
+		F1BBF47B2BFF921000268696 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF47A2BFF921000268696 /* PeopleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F164549E2BFF486F002DB93B /* MyStarWarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStarWarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16454A12BFF486F002DB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F16454A52BFF486F002DB93B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F16454AA2BFF4870002DB93B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F16454AD2BFF4870002DB93B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F16454AF2BFF4870002DB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1BBF4732BFF919E00268696 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F1BBF4752BFF91C900268696 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
+		F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
+		F1BBF47A2BFF921000268696 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +58,56 @@
 		F16454A02BFF486F002DB93B /* MyStarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				F1BBF4722BFF918200268696 /* Utilities */,
+				F1BBF4712BFF917500268696 /* Networking */,
+				F1BBF4702BFF916B00268696 /* Views */,
+				F1BBF46F2BFF915C00268696 /* ViewModels */,
+				F1BBF46E2BFF915400268696 /* Models */,
 				F16454A12BFF486F002DB93B /* AppDelegate.swift */,
-				F16454A52BFF486F002DB93B /* ViewController.swift */,
 				F16454AA2BFF4870002DB93B /* Assets.xcassets */,
 				F16454AC2BFF4870002DB93B /* LaunchScreen.storyboard */,
 				F16454AF2BFF4870002DB93B /* Info.plist */,
 			);
 			path = MyStarWarsApp;
+			sourceTree = "<group>";
+		};
+		F1BBF46E2BFF915400268696 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1BBF4752BFF91C900268696 /* PeopleModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1BBF46F2BFF915C00268696 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F1BBF4702BFF916B00268696 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1BBF47A2BFF921000268696 /* PeopleViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1BBF4712BFF917500268696 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F1BBF4732BFF919E00268696 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F1BBF4722BFF918200268696 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F16454A62BFF486F002DB93B /* ViewController.swift in Sources */,
+				F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */,
+				F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */,
+				F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */,
 				F16454A22BFF486F002DB93B /* AppDelegate.swift in Sources */,
+				F1BBF47B2BFF921000268696 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

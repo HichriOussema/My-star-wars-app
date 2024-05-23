@@ -17,6 +17,7 @@
 		F1BBF47F2BFF99FD00268696 /* SpeciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF47E2BFF99FD00268696 /* SpeciesModel.swift */; };
 		F1BBF4812BFF9A2500268696 /* SpeciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */; };
 		F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */; };
+		F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4842BFFA02800268696 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F1BBF47E2BFF99FD00268696 /* SpeciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesModel.swift; sourceTree = "<group>"; };
 		F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewModel.swift; sourceTree = "<group>"; };
 		F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewController.swift; sourceTree = "<group>"; };
+		F1BBF4842BFFA02800268696 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				F1BBF47A2BFF921000268696 /* PeopleViewController.swift */,
 				F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */,
+				F1BBF4842BFFA02800268696 /* DetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */,
 				F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */,
 				F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */,
 				F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */,

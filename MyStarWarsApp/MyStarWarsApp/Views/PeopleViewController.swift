@@ -65,9 +65,9 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let detailVC = DetailViewController()
-       // detailVC.person = viewModel.people[indexPath.row]
-       // navigationController?.pushViewController(detailVC, animated: true)
+       let detailVC = DetailViewController()
+       detailVC.person = viewModel.people[indexPath.row]
+       navigationController?.pushViewController(detailVC, animated: true)
       print("Pushed to detail")
     }
 

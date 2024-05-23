@@ -65,10 +65,10 @@ extension SpeciesViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let detailVC = DetailViewController()
-        //detailVC.species = viewModel.species[indexPath.row]
-        //navigationController?.pushViewController(detailVC, animated: true)
-      print("Detail pushed from species")
+        let detailVC = DetailViewController()
+        detailVC.species = viewModel.species[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+        print("Detail pushed from species")
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

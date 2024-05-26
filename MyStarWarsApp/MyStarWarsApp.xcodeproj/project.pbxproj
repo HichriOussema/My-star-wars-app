@@ -18,6 +18,9 @@
 		F1BBF4812BFF9A2500268696 /* SpeciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */; };
 		F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */; };
 		F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4842BFFA02800268696 /* DetailViewController.swift */; };
+		F1D927152C00CCE200BB403F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F1D927142C00CCE200BB403F /* GRDB */; };
+		F1D927192C00CD1200BB403F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D927182C00CD1200BB403F /* DatabaseManager.swift */; };
+		F1D9271C2C00E05F00BB403F /* CSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F1D9271B2C00E05F00BB403F /* CSQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,7 @@
 		F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewModel.swift; sourceTree = "<group>"; };
 		F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewController.swift; sourceTree = "<group>"; };
 		F1BBF4842BFFA02800268696 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F1D927182C00CD1200BB403F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D9271C2C00E05F00BB403F /* CSQLite in Frameworks */,
+				F1D927152C00CCE200BB403F /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,7 @@
 			children = (
 				F16454A02BFF486F002DB93B /* MyStarWarsApp */,
 				F164549F2BFF486F002DB93B /* Products */,
+				F1D9271A2C00E05F00BB403F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,8 +125,16 @@
 		F1BBF4722BFF918200268696 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F1D927182C00CD1200BB403F /* DatabaseManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F1D9271A2C00E05F00BB403F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +153,10 @@
 			dependencies = (
 			);
 			name = MyStarWarsApp;
+			packageProductDependencies = (
+				F1D927142C00CCE200BB403F /* GRDB */,
+				F1D9271B2C00E05F00BB403F /* CSQLite */,
+			);
 			productName = MyStarWarsApp;
 			productReference = F164549E2BFF486F002DB93B /* MyStarWarsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -166,6 +185,9 @@
 				Base,
 			);
 			mainGroup = F16454952BFF486F002DB93B;
+			packageReferences = (
+				F1D927132C00CCE200BB403F /* XCRemoteSwiftPackageReference "GRDB" */,
+			);
 			productRefGroup = F164549F2BFF486F002DB93B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -194,6 +216,7 @@
 			files = (
 				F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */,
 				F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */,
+				F1D927192C00CD1200BB403F /* DatabaseManager.swift in Sources */,
 				F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */,
 				F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */,
 				F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */,
@@ -413,6 +436,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1D927132C00CCE200BB403F /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1D927142C00CCE200BB403F /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1D927132C00CCE200BB403F /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+		F1D9271B2C00E05F00BB403F /* CSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1D927132C00CCE200BB403F /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = CSQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F16454962BFF486F002DB93B /* Project object */;
 }

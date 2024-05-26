@@ -18,6 +18,8 @@
 		F1BBF4812BFF9A2500268696 /* SpeciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */; };
 		F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */; };
 		F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4842BFFA02800268696 /* DetailViewController.swift */; };
+		F1CD3D6E2C036DA000644D34 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CD3D6D2C036DA000644D34 /* CustomView.swift */; };
+		F1CD3D702C036DAD00644D34 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CD3D6F2C036DAD00644D34 /* CustomCell.swift */; };
 		F1D927152C00CCE200BB403F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F1D927142C00CCE200BB403F /* GRDB */; };
 		F1D927192C00CD1200BB403F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D927182C00CD1200BB403F /* DatabaseManager.swift */; };
 		F1D9271C2C00E05F00BB403F /* CSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F1D9271B2C00E05F00BB403F /* CSQLite */; };
@@ -37,6 +39,8 @@
 		F1BBF4802BFF9A2500268696 /* SpeciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewModel.swift; sourceTree = "<group>"; };
 		F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewController.swift; sourceTree = "<group>"; };
 		F1BBF4842BFFA02800268696 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F1CD3D6D2C036DA000644D34 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		F1CD3D6F2C036DAD00644D34 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F1D927182C00CD1200BB403F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,7 @@
 		F1BBF4702BFF916B00268696 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F1CD3D6C2C036D8100644D34 /* Components */,
 				F1BBF47A2BFF921000268696 /* PeopleViewController.swift */,
 				F1BBF4822BFF9A4D00268696 /* SpeciesViewController.swift */,
 				F1BBF4842BFFA02800268696 /* DetailViewController.swift */,
@@ -128,6 +133,15 @@
 				F1D927182C00CD1200BB403F /* DatabaseManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F1CD3D6C2C036D8100644D34 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F1CD3D6D2C036DA000644D34 /* CustomView.swift */,
+				F1CD3D6F2C036DAD00644D34 /* CustomCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		F1D9271A2C00E05F00BB403F /* Frameworks */ = {
@@ -220,9 +234,11 @@
 				F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */,
 				F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */,
 				F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */,
+				F1CD3D6E2C036DA000644D34 /* CustomView.swift in Sources */,
 				F16454A22BFF486F002DB93B /* AppDelegate.swift in Sources */,
 				F1BBF47F2BFF99FD00268696 /* SpeciesModel.swift in Sources */,
 				F1BBF4812BFF9A2500268696 /* SpeciesViewModel.swift in Sources */,
+				F1CD3D702C036DAD00644D34 /* CustomCell.swift in Sources */,
 				F1BBF47B2BFF921000268696 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

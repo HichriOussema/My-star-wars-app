@@ -15,7 +15,7 @@ class SpeciesViewController: UIViewController {
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
     return collectionView
   }()
   
@@ -38,14 +38,33 @@ class SpeciesViewController: UIViewController {
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
+    // Add Pull-to-Refresh
+    collectionView.refreshControl = UIRefreshControl()
+    collectionView.refreshControl?.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+  }
+  
+  @objc private func reloadData() {
+    fetchData()
   }
   
   private func fetchData() {
     viewModel.fetchSpecies {
       DispatchQueue.main.async {
-        self.collectionView.reloadData()
+        self.collectionView.refreshControl?.endRefreshing()
+        if self.viewModel.species.isEmpty {
+          self.showErrorAlert()
+        } else {
+          self.collectionView.reloadData()
+        }
       }
     }
+  }
+  private func showErrorAlert() {
+    let alert = UIAlertController(title: "Error", message: "Failed to load data. Please check your internet connection and try again.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+      self.fetchData()
+    }))
+    present(alert, animated: true, completion: nil)
   }
 }
 
@@ -55,12 +74,8 @@ extension SpeciesViewController: UICollectionViewDelegate, UICollectionViewDataS
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.contentView.backgroundColor = .lightGray
-    let label = UILabel(frame: cell.contentView.bounds)
-    label.text = viewModel.species[indexPath.row].name
-    label.textAlignment = .center
-    cell.contentView.addSubview(label)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath)as! CustomCell
+    cell.configure(with: viewModel.species[indexPath.row].name)
     return cell
   }
   
@@ -68,7 +83,6 @@ extension SpeciesViewController: UICollectionViewDelegate, UICollectionViewDataS
     let detailVC = DetailViewController()
     detailVC.species = viewModel.species[indexPath.row]
     navigationController?.pushViewController(detailVC, animated: true)
-    print("Detail pushed from species")
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {

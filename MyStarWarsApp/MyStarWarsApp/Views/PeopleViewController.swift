@@ -15,7 +15,7 @@ class PeopleViewController: UIViewController {
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
     return collectionView
   }()
   
@@ -30,6 +30,7 @@ class PeopleViewController: UIViewController {
   private func setupCollectionView() {
     collectionView.delegate = self
     collectionView.dataSource = self
+    collectionView.prefetchDataSource = self
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -38,29 +39,48 @@ class PeopleViewController: UIViewController {
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
+    // Add Pull-to-Refresh
+    collectionView.refreshControl = UIRefreshControl()
+    collectionView.refreshControl?.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+  }
+  
+  @objc private func reloadData() {
+    fetchData()
   }
   
   private func fetchData() {
+    print("Fetching initial data from VC")
     viewModel.fetchPeople {
       DispatchQueue.main.async {
-        self.collectionView.reloadData()
+        self.collectionView.refreshControl?.endRefreshing()
+        if self.viewModel.people.isEmpty {
+          self.showErrorAlert()
+        } else {
+          self.collectionView.reloadData()
+          print("Initial data loaded")
+        }
       }
     }
+  }
+  private func showErrorAlert() {
+    let alert = UIAlertController(title: "Error", message: "Failed to load data. Please check your internet connection and try again.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+      self.fetchData()
+    }))
+    present(alert, animated: true, completion: nil)
   }
 }
 
 extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    print("Number of items in section: \(viewModel.people.count)")
     return viewModel.people.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.contentView.backgroundColor = .lightGray
-    let label = UILabel(frame: cell.contentView.bounds)
-    label.text = viewModel.people[indexPath.row].name
-    label.textAlignment = .center
-    cell.contentView.addSubview(label)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+    cell.configure(with: viewModel.people[indexPath.row].name)
+    print("Configured cell for item at indexPath: \(indexPath)")
     return cell
   }
   
@@ -68,18 +88,20 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     let detailVC = DetailViewController()
     detailVC.person = viewModel.people[indexPath.row]
     navigationController?.pushViewController(detailVC, animated: true)
-    print("Pushed to detail")
   }
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let offsetY = scrollView.contentOffset.y
-    let contentHeight = scrollView.contentSize.height
-    if offsetY > contentHeight - scrollView.frame.height - 100 {
-      viewModel.fetchNextPage {
-        DispatchQueue.main.async {
-          self.collectionView.reloadData()
+}
+
+
+extension PeopleViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let maxIndex = indexPaths.map({ $0.row }).max() else { return }
+        if maxIndex >= viewModel.people.count - 2 {
+            print("Prefetching for index: \(indexPaths)")
+            viewModel.fetchNextPage {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
         }
-      }
     }
-  }
 }

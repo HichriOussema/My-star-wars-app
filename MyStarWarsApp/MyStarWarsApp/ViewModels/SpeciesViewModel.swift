@@ -10,6 +10,8 @@ import Foundation
 class SpeciesViewModel {
   var species: [Species] = []
   var nextPageURL: String?
+  var error: String?
+  
   private let databaseManager = DatabaseManager.shared
   
   func fetchSpecies(completion: @escaping () -> Void) {
@@ -28,6 +30,7 @@ class SpeciesViewModel {
           print("Saved species to database: \(response.results)")
           completion()
         case .failure(let error):
+          self.error = error.localizedDescription
           print("Error fetching species: \(error)")
         }
       }
@@ -44,6 +47,7 @@ class SpeciesViewModel {
         self.databaseManager.saveSpecies(response.results)
         completion()
       case .failure(let error):
+        self.error = error.localizedDescription
         print("Error fetching next page: \(error)")
       }
     }

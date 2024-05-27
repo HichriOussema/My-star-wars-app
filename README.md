@@ -24,8 +24,8 @@ open MyStarWarsApp.xcodeproj
 3. Running the App:
 
 Build and run the app in Xcode:
--Select the desired simulator or device.
--Press Cmd + R or click the Run button.
+- Select the desired simulator or device.
+- Press Cmd + R or click the Run button.
 
 ## Architecture
 The app is structured following the MVVM (Model-View-ViewModel) pattern, which promotes a clean separation of concerns and enhances testability.
@@ -42,11 +42,12 @@ Unit tests are included to validate the functionality of the app. The tests cove
 Network requests: Ensures the app correctly interacts with the Star Wars API.
 ViewModels: Validates the business logic and state management.
 ## Running Tests
--Open the test navigator in Xcode:
 
--Press Cmd + 6 or click on the Test Navigator tab.
--Run all tests:
--Press Cmd + U or click the Run button in the test navigator
+- Open the test navigator in Xcode:
+- Press Cmd + 6 or click on the Test Navigator tab.
+- Run all tests:
+- Press Cmd + U or click the Run button in the test navigator
+
 ## Contributing
 If you want to contribute, please follow these steps:
 1. Fork the repository.

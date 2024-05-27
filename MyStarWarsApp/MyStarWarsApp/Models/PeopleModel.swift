@@ -39,6 +39,23 @@ struct Person: Decodable, FetchableRecord, PersistableRecord {
     case gender, homeworld, created, edited
   }
   
+  // Custom initializer
+  init(id: Int64?, name: String, height: String, mass: String, hairColor: String, skinColor: String, eyeColor: String, birthYear: String, gender: String, homeworld: String, created: String, edited: String, url: String) {
+    self.id = id
+    self.name = name
+    self.height = height
+    self.mass = mass
+    self.hairColor = hairColor
+    self.skinColor = skinColor
+    self.eyeColor = eyeColor
+    self.birthYear = birthYear
+    self.gender = gender
+    self.homeworld = homeworld
+    self.created = created
+    self.edited = edited
+    self.url = url
+  }
+  
   // Required initializers for FetchableRecord and PersistableRecord
   init(row: Row) {
     id = row["id"]

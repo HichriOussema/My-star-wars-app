@@ -40,7 +40,23 @@ struct Species: Decodable, FetchableRecord, PersistableRecord {
     case averageLifespan = "average_lifespan"
     case homeworld, language, created, edited, url
   }
-  
+  // Custom initializer
+  init(id: Int64?, name: String, classification: String, designation: String, averageHeight: String, skinColors: String, hairColors: String, eyeColors: String, averageLifespan: String, homeworld: String?, language: String, created: String, edited: String, url: String) {
+    self.id = id
+    self.name = name
+    self.classification = classification
+    self.designation = designation
+    self.averageHeight = averageHeight
+    self.skinColors = skinColors
+    self.hairColors = hairColors
+    self.eyeColors = eyeColors
+    self.averageLifespan = averageLifespan
+    self.homeworld = homeworld
+    self.language = language
+    self.created = created
+    self.edited = edited
+    self.url = url
+  }
   init(row: Row) {
     id = row["id"]
     name = row["name"]

@@ -15,6 +15,9 @@
 		F1A0AF852C046272007C8210 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF842C046272007C8210 /* ReachabilityManager.swift */; };
 		F1A0AF872C046499007C8210 /* SpeciesRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF862C046499007C8210 /* SpeciesRemoteRepository.swift */; };
 		F1A0AF892C0464AD007C8210 /* SpeciesLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */; };
+		F1A0AF932C0499D3007C8210 /* MyStarWarsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF922C0499D3007C8210 /* MyStarWarsAppTests.swift */; };
+		F1A0AF9A2C0499F8007C8210 /* PeopleRemoteRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF992C0499F8007C8210 /* PeopleRemoteRepositoryTests.swift */; };
+		F1A0AF9C2C049D1E007C8210 /* PeopleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF9B2C049D1E007C8210 /* PeopleViewModelTests.swift */; };
 		F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4732BFF919E00268696 /* NetworkService.swift */; };
 		F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4752BFF91C900268696 /* PeopleModel.swift */; };
 		F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */; };
@@ -30,6 +33,16 @@
 		F1D9271C2C00E05F00BB403F /* CSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F1D9271B2C00E05F00BB403F /* CSQLite */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F1A0AF942C0499D3007C8210 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F16454962BFF486F002DB93B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F164549D2BFF486F002DB93B;
+			remoteInfo = MyStarWarsApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F164549E2BFF486F002DB93B /* MyStarWarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStarWarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16454A12BFF486F002DB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +54,10 @@
 		F1A0AF842C046272007C8210 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		F1A0AF862C046499007C8210 /* SpeciesRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRemoteRepository.swift; sourceTree = "<group>"; };
 		F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesLocalRepository.swift; sourceTree = "<group>"; };
+		F1A0AF902C0499D3007C8210 /* MyStarWarsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyStarWarsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A0AF922C0499D3007C8210 /* MyStarWarsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStarWarsAppTests.swift; sourceTree = "<group>"; };
+		F1A0AF992C0499F8007C8210 /* PeopleRemoteRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRemoteRepositoryTests.swift; sourceTree = "<group>"; };
+		F1A0AF9B2C049D1E007C8210 /* PeopleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModelTests.swift; sourceTree = "<group>"; };
 		F1BBF4732BFF919E00268696 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F1BBF4752BFF91C900268696 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A0AF8D2C0499D3007C8210 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F16454A02BFF486F002DB93B /* MyStarWarsApp */,
+				F1A0AF912C0499D3007C8210 /* MyStarWarsAppTests */,
 				F164549F2BFF486F002DB93B /* Products */,
 				F1D9271A2C00E05F00BB403F /* Frameworks */,
 			);
@@ -80,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				F164549E2BFF486F002DB93B /* MyStarWarsApp.app */,
+				F1A0AF902C0499D3007C8210 /* MyStarWarsAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +136,16 @@
 				F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F1A0AF912C0499D3007C8210 /* MyStarWarsAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1A0AF922C0499D3007C8210 /* MyStarWarsAppTests.swift */,
+				F1A0AF992C0499F8007C8210 /* PeopleRemoteRepositoryTests.swift */,
+				F1A0AF9B2C049D1E007C8210 /* PeopleViewModelTests.swift */,
+			);
+			path = MyStarWarsAppTests;
 			sourceTree = "<group>";
 		};
 		F1BBF46E2BFF915400268696 /* Models */ = {
@@ -198,6 +234,24 @@
 			productReference = F164549E2BFF486F002DB93B /* MyStarWarsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F1A0AF8F2C0499D3007C8210 /* MyStarWarsAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A0AF962C0499D3007C8210 /* Build configuration list for PBXNativeTarget "MyStarWarsAppTests" */;
+			buildPhases = (
+				F1A0AF8C2C0499D3007C8210 /* Sources */,
+				F1A0AF8D2C0499D3007C8210 /* Frameworks */,
+				F1A0AF8E2C0499D3007C8210 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1A0AF952C0499D3007C8210 /* PBXTargetDependency */,
+			);
+			name = MyStarWarsAppTests;
+			productName = MyStarWarsAppTests;
+			productReference = F1A0AF902C0499D3007C8210 /* MyStarWarsAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,6 +264,10 @@
 				TargetAttributes = {
 					F164549D2BFF486F002DB93B = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					F1A0AF8F2C0499D3007C8210 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = F164549D2BFF486F002DB93B;
 					};
 				};
 			};
@@ -230,6 +288,7 @@
 			projectRoot = "";
 			targets = (
 				F164549D2BFF486F002DB93B /* MyStarWarsApp */,
+				F1A0AF8F2C0499D3007C8210 /* MyStarWarsAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +300,13 @@
 			files = (
 				F16454AE2BFF4870002DB93B /* LaunchScreen.storyboard in Resources */,
 				F16454AB2BFF4870002DB93B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A0AF8E2C0499D3007C8210 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +337,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A0AF8C2C0499D3007C8210 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A0AF9A2C0499F8007C8210 /* PeopleRemoteRepositoryTests.swift in Sources */,
+				F1A0AF9C2C049D1E007C8210 /* PeopleViewModelTests.swift in Sources */,
+				F1A0AF932C0499D3007C8210 /* MyStarWarsAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1A0AF952C0499D3007C8210 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F164549D2BFF486F002DB93B /* MyStarWarsApp */;
+			targetProxy = F1A0AF942C0499D3007C8210 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F16454AC2BFF4870002DB93B /* LaunchScreen.storyboard */ = {
@@ -458,6 +542,42 @@
 			};
 			name = Release;
 		};
+		F1A0AF972C0499D3007C8210 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 826R9XN9GL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oussemaHichri.MyStarWarsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyStarWarsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyStarWarsApp";
+			};
+			name = Debug;
+		};
+		F1A0AF982C0499D3007C8210 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 826R9XN9GL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oussemaHichri.MyStarWarsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyStarWarsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyStarWarsApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -475,6 +595,15 @@
 			buildConfigurations = (
 				F16454B32BFF4870002DB93B /* Debug */,
 				F16454B42BFF4870002DB93B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1A0AF962C0499D3007C8210 /* Build configuration list for PBXNativeTarget "MyStarWarsAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A0AF972C0499D3007C8210 /* Debug */,
+				F1A0AF982C0499D3007C8210 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

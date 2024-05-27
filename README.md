@@ -31,10 +31,10 @@ Build and run the app in Xcode:
 The app is structured following the MVVM (Model-View-ViewModel) pattern, which promotes a clean separation of concerns and enhances testability.
 
 ## Project Structure
--Models: Contains the data models for the app (e.g., Person, Species).
--ViewModels: Contains the logic and state for each view.
--Views: Contains the UI components.
--Repositories: Manages data operations, including network requests.
+- Models : Contains the data models for the app (e.g., Person, Species).
+- ViewModels: Contains the logic and state for each view.
+- Views: Contains the UI components.
+- Repositories: Manages data operations, including network requests.
 
 ## Testing
 Unit tests are included to validate the functionality of the app. The tests cover:

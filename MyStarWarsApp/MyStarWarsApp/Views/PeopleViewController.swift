@@ -10,11 +10,23 @@ import UIKit
 
 class PeopleViewController: UIViewController {
   
-  private let viewModel = PeopleViewModel()
+  private let viewModel: PeopleViewModel
+  
+  init(viewModel: PeopleViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   private let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+    layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 100)
+    layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .clear
     collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
     return collectionView
   }()
@@ -45,11 +57,13 @@ class PeopleViewController: UIViewController {
   }
   
   @objc private func reloadData() {
-    fetchData()
+    //fetchData()
+    self.collectionView.reloadData()
+    self.collectionView.refreshControl?.endRefreshing()
   }
   
   private func fetchData() {
-    print("Fetching initial data from VC")
+    print("Fetching initial data from VC", self.viewModel.people.count)
     viewModel.fetchPeople {
       DispatchQueue.main.async {
         self.collectionView.refreshControl?.endRefreshing()
@@ -79,7 +93,7 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
-    cell.configure(with: viewModel.people[indexPath.row].name)
+    cell.configure(name: viewModel.people[indexPath.row].name)
     print("Configured cell for item at indexPath: \(indexPath)")
     return cell
   }
@@ -93,15 +107,15 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 
 extension PeopleViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        guard let maxIndex = indexPaths.map({ $0.row }).max() else { return }
-        if maxIndex >= viewModel.people.count - 2 {
-            print("Prefetching for index: \(indexPaths)")
-            viewModel.fetchNextPage {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    guard let maxIndex = indexPaths.map({ $0.row }).max() else { return }
+    if maxIndex >= viewModel.people.count - 2 {
+      print("Prefetching for index: \(indexPaths)")
+      viewModel.fetchNextPage {
+        DispatchQueue.main.async {
+          self.collectionView.reloadData()
         }
+      }
     }
+  }
 }

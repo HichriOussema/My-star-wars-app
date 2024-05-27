@@ -10,6 +10,11 @@
 		F16454A22BFF486F002DB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16454A12BFF486F002DB93B /* AppDelegate.swift */; };
 		F16454AB2BFF4870002DB93B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16454AA2BFF4870002DB93B /* Assets.xcassets */; };
 		F16454AE2BFF4870002DB93B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16454AC2BFF4870002DB93B /* LaunchScreen.storyboard */; };
+		F1A0AF812C0461BE007C8210 /* PeopleLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF802C0461BE007C8210 /* PeopleLocalRepository.swift */; };
+		F1A0AF832C0461FC007C8210 /* PeopleRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF822C0461FC007C8210 /* PeopleRemoteRepository.swift */; };
+		F1A0AF852C046272007C8210 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF842C046272007C8210 /* ReachabilityManager.swift */; };
+		F1A0AF872C046499007C8210 /* SpeciesRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF862C046499007C8210 /* SpeciesRemoteRepository.swift */; };
+		F1A0AF892C0464AD007C8210 /* SpeciesLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */; };
 		F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4732BFF919E00268696 /* NetworkService.swift */; };
 		F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4752BFF91C900268696 /* PeopleModel.swift */; };
 		F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */; };
@@ -31,6 +36,11 @@
 		F16454AA2BFF4870002DB93B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F16454AD2BFF4870002DB93B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F16454AF2BFF4870002DB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1A0AF802C0461BE007C8210 /* PeopleLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleLocalRepository.swift; sourceTree = "<group>"; };
+		F1A0AF822C0461FC007C8210 /* PeopleRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRemoteRepository.swift; sourceTree = "<group>"; };
+		F1A0AF842C046272007C8210 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		F1A0AF862C046499007C8210 /* SpeciesRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRemoteRepository.swift; sourceTree = "<group>"; };
+		F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesLocalRepository.swift; sourceTree = "<group>"; };
 		F1BBF4732BFF919E00268696 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F1BBF4752BFF91C900268696 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		F1BBF4772BFF91E600268696 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
@@ -77,6 +87,7 @@
 		F16454A02BFF486F002DB93B /* MyStarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				F1A0AF7F2C04618E007C8210 /* Repositories */,
 				F1BBF4722BFF918200268696 /* Utilities */,
 				F1BBF4712BFF917500268696 /* Networking */,
 				F1BBF4702BFF916B00268696 /* Views */,
@@ -88,6 +99,17 @@
 				F16454AF2BFF4870002DB93B /* Info.plist */,
 			);
 			path = MyStarWarsApp;
+			sourceTree = "<group>";
+		};
+		F1A0AF7F2C04618E007C8210 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F1A0AF802C0461BE007C8210 /* PeopleLocalRepository.swift */,
+				F1A0AF822C0461FC007C8210 /* PeopleRemoteRepository.swift */,
+				F1A0AF862C046499007C8210 /* SpeciesRemoteRepository.swift */,
+				F1A0AF882C0464AD007C8210 /* SpeciesLocalRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		F1BBF46E2BFF915400268696 /* Models */ = {
@@ -131,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				F1D927182C00CD1200BB403F /* DatabaseManager.swift */,
+				F1A0AF842C046272007C8210 /* ReachabilityManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -228,18 +251,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A0AF872C046499007C8210 /* SpeciesRemoteRepository.swift in Sources */,
 				F1BBF4852BFFA02800268696 /* DetailViewController.swift in Sources */,
 				F1BBF4742BFF919E00268696 /* NetworkService.swift in Sources */,
 				F1D927192C00CD1200BB403F /* DatabaseManager.swift in Sources */,
+				F1A0AF892C0464AD007C8210 /* SpeciesLocalRepository.swift in Sources */,
 				F1BBF4832BFF9A4D00268696 /* SpeciesViewController.swift in Sources */,
+				F1A0AF852C046272007C8210 /* ReachabilityManager.swift in Sources */,
 				F1BBF4762BFF91C900268696 /* PeopleModel.swift in Sources */,
 				F1BBF4782BFF91E600268696 /* PeopleViewModel.swift in Sources */,
 				F1CD3D6E2C036DA000644D34 /* CustomView.swift in Sources */,
 				F16454A22BFF486F002DB93B /* AppDelegate.swift in Sources */,
 				F1BBF47F2BFF99FD00268696 /* SpeciesModel.swift in Sources */,
 				F1BBF4812BFF9A2500268696 /* SpeciesViewModel.swift in Sources */,
+				F1A0AF832C0461FC007C8210 /* PeopleRemoteRepository.swift in Sources */,
 				F1CD3D702C036DAD00644D34 /* CustomCell.swift in Sources */,
 				F1BBF47B2BFF921000268696 /* PeopleViewController.swift in Sources */,
+				F1A0AF812C0461BE007C8210 /* PeopleLocalRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

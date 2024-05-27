@@ -9,49 +9,50 @@ import Foundation
 
 class SpeciesViewModel {
   var species: [Species] = []
-  var nextPageURL: String?
-  var error: String?
+  var page = 1
+  private let speciesLocalRepository:SpeciesLocalStorable
+  private let reachabilityManager: ReachabilityManager
+  private let speicesFetcher: SpeciesRepositoryFetcher
+  init(
+    speciesLocalRepository: SpeciesLocalStorable,
+    reachabilityManager: ReachabilityManager,
+    speicesFetcher: SpeciesRepositoryFetcher
+  ) {
+    self.speciesLocalRepository = speciesLocalRepository
+    self.reachabilityManager = reachabilityManager
+    self.speicesFetcher = speicesFetcher
+  }
   
-  private let databaseManager = DatabaseManager.shared
   
   func fetchSpecies(completion: @escaping () -> Void) {
-    let offlineSpecies = databaseManager.fetchSpecies()
-    if !offlineSpecies.isEmpty {
-      self.species = offlineSpecies
-      print("Loaded species from database: \(offlineSpecies)")
+    if !reachabilityManager.isConnected {
+      species = speciesLocalRepository.fetchSpecies()
       completion()
     } else {
-      NetworkService.shared.fetchData(endpoint: "species") { (result: Result<SpeciesResponse, Error>) in
+      speicesFetcher.fetch(page: page) { result in
         switch result {
-        case .success(let response):
-          self.species = response.results
-          self.nextPageURL = response.next
-          self.databaseManager.saveSpecies(response.results)
-          print("Saved species to database: \(response.results)")
+        case .success(let species):
+          self.species = species
+          self.speciesLocalRepository.saveSpecies(species)
           completion()
         case .failure(let error):
-          self.error = error.localizedDescription
-          print("Error fetching species: \(error)")
+          print(error)
+          completion()
         }
       }
     }
   }
   
   func fetchNextPage(completion: @escaping () -> Void) {
-    guard let nextPage = nextPageURL else { return }
-    NetworkService.shared.fetchData(endpoint: nextPage) { (result: Result<SpeciesResponse, Error>) in
+    page += 1
+    speicesFetcher.fetch(page: page) { result in
       switch result {
-      case .success(let response):
-        self.species.append(contentsOf: response.results)
-        self.nextPageURL = response.next
-        self.databaseManager.saveSpecies(response.results)
+      case .success(let species):
+        self.species.append(contentsOf: species)
+        self.speciesLocalRepository.saveSpecies(species)
         completion()
-      case .failure(let error):
-        self.error = error.localizedDescription
-        print("Error fetching next page: \(error)")
+      case .failure(_): break
       }
     }
   }
 }
-
-

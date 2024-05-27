@@ -7,55 +7,53 @@
 
 import Foundation
 
-import Foundation
-
 class PeopleViewModel {
-    var people: [Person] = []
-    var nextPageURL: String?
-    private let databaseManager = DatabaseManager.shared
-
-    func fetchPeople(completion: @escaping () -> Void) {
-        print("Fetching initial data")
-        let offlinePeople = databaseManager.fetchPeople()
-        if !offlinePeople.isEmpty {
-            self.people = offlinePeople
-            print("Loaded offline people from database: \(offlinePeople)")
-            completion()
-        } else {
-            NetworkService.shared.fetchData(endpoint: "people") { (result: Result<PeopleResponse, Error>) in
-                switch result {
-                case .success(let response):
-                    self.people = response.results
-                    self.nextPageURL = response.next
-                    self.databaseManager.savePeople(response.results)
-                    print("Fetched people from network: \(response.results)")
-                    print("Next page URL: \(self.nextPageURL ?? "None")")
-                    completion()
-                case .failure(let error):
-                    print("Error fetching people: \(error)")
-                }
-            }
+  var people: [Person] = []
+  var page = 1
+  private let peopleLocalRepository:PeopleLocalStorable
+  private let reachabilityManager: ReachabilityManager
+  private let peopleFetcher: PeopleRepositoryFetcher
+  
+  init(
+    peopleLocalRepository: PeopleLocalStorable,
+    reachabilityManager: ReachabilityManager,
+    peopleFetcher:PeopleRepositoryFetcher
+  ) {
+    self.peopleLocalRepository = peopleLocalRepository
+    self.reachabilityManager = reachabilityManager
+    self.peopleFetcher = peopleFetcher
+  }
+  
+  func fetchPeople(completion: @escaping () -> Void) {
+    if !reachabilityManager.isConnected {
+      people = peopleLocalRepository.fetchPeople()
+      completion()
+    } else {
+      peopleFetcher.fetch(page:page) { result in
+        switch result {
+        case .success(let people):
+          self.people = people
+          self.peopleLocalRepository.savePeople(people)
+          completion()
+        case .failure(let error ):
+          print(error)
+          completion()
+          
         }
+      }
     }
-
-    func fetchNextPage(completion: @escaping () -> Void) {
-        guard let nextPage = nextPageURL else {
-            print("No nextPageURL")
-            return
-        }
-        print("Fetching next page from URL: \(nextPage)")
-        NetworkService.shared.fetchData(endpoint: nextPage) { (result: Result<PeopleResponse, Error>) in
-            switch result {
-            case .success(let response):
-                self.people.append(contentsOf: response.results)
-                self.nextPageURL = response.next
-                self.databaseManager.savePeople(response.results)
-                print("Fetched next page people from network: \(response.results)")
-                print("Next page URL: \(self.nextPageURL ?? "None")")
-                completion()
-            case .failure(let error):
-                print("Error fetching next page: \(error)")
-            }
-        }
+  }
+  
+  func fetchNextPage(completion: @escaping () -> Void) {
+    page += 1
+    peopleFetcher.fetch(page:page) { result in
+      switch result {
+      case .success(let people):
+        self.people.append(contentsOf: people)
+        self.peopleLocalRepository.savePeople(people)
+        completion()
+      case .failure(_): break
+      }
     }
+  }
 }

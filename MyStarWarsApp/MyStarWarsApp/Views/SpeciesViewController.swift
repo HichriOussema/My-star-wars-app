@@ -10,11 +10,23 @@ import UIKit
 
 class SpeciesViewController: UIViewController {
   
-  private let viewModel = SpeciesViewModel()
+  private let viewModel : SpeciesViewModel
+  
+  init(viewModel: SpeciesViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   private let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+    layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 100)
+    layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .clear
     collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
     return collectionView
   }()
@@ -44,7 +56,9 @@ class SpeciesViewController: UIViewController {
   }
   
   @objc private func reloadData() {
-    fetchData()
+    //fetchData()
+    self.collectionView.reloadData()
+    self.collectionView.refreshControl?.endRefreshing()
   }
   
   private func fetchData() {
@@ -75,7 +89,7 @@ extension SpeciesViewController: UICollectionViewDelegate, UICollectionViewDataS
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath)as! CustomCell
-    cell.configure(with: viewModel.species[indexPath.row].name)
+    cell.configure(name: viewModel.species[indexPath.row].name, classification: viewModel.species[indexPath.row].classification)
     return cell
   }
   

@@ -1,5 +1,4 @@
 # My-star-wars-app
-# # Thortful iOS Challenge
 
 ## Overview
 
